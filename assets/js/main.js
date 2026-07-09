@@ -1,26 +1,31 @@
 
-Header
+// Header
 const topbar = document.getElementById('topbar');
+
 window.addEventListener('scroll', () => {
-    topbar.classList.toggle('solid', window.scrollY > 20);
+    if (topbar) {
+        topbar.classList.toggle('solid', window.scrollY > 20);
+    }
 });
 
 // Mobile Menu
 const menuButton = document.getElementById('menuButton');
 const mainNav = document.getElementById('mainNav');
 
-menuButton.addEventListener('click', () => {
-    const opened = mainNav.classList.toggle('open');
-    menuButton.setAttribute('aria-expanded', opened);
-});
+if (menuButton && mainNav) {
 
-// Close menu when a menu link is clicked
-document.querySelectorAll('#mainNav a').forEach(link => {
-    link.addEventListener('click', () => {
-        mainNav.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.addEventListener('click', () => {
+        const opened = mainNav.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', opened);
     });
-});
+
+    document.querySelectorAll('#mainNav a').forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('open');
+            menuButton.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
 
 // Hero Slider
 const slides = document.querySelectorAll('.hero-slide');
@@ -36,30 +41,31 @@ if (slides.length > 1) {
 
 // Footer Year
 const year = document.getElementById('year');
+
 if (year) {
     year.textContent = new Date().getFullYear();
 }
 
-// Lightbox Gallery
+// Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightboxImage');
 const closeLightbox = document.getElementById('closeLightbox');
 
 document.querySelectorAll('[data-full]').forEach(button => {
     button.addEventListener('click', () => {
-        lightboxImage.src = button.dataset.full;
-        lightbox.showModal();
+        if (lightbox && lightboxImage) {
+            lightboxImage.src = button.dataset.full;
+            lightbox.showModal();
+        }
     });
 });
 
-if (closeLightbox) {
+if (closeLightbox && lightbox) {
     closeLightbox.addEventListener('click', () => {
         lightbox.close();
     });
-}
 
-if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
+    lightbox.addEventListener('click', e => {
         if (e.target === lightbox) {
             lightbox.close();
         }
