@@ -10,3 +10,15 @@ document.querySelectorAll('#mainNav a').forEach(link => {
         menuButton.setAttribute('aria-expanded', 'false');
     });
 });
+
+
+
+document.addEventListener('click', function(e) {
+    if (
+        !mainNav.contains(e.target) &&
+        !menuButton.contains(e.target)
+    ) {
+        mainNav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+    }
+});
