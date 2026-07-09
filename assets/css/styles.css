@@ -17,3 +17,9 @@
     backdrop-filter:blur(8px);
 }
 
+
+.plan-card img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
