@@ -1,17 +1,20 @@
-const topbar=document.getElementById('topbar');const menuButton=document.getElementById('menuButton');const mainNav=document.getElementById('mainNav');const slides=[...document.querySelectorAll('.hero-slide')];let index=0;document.getElementById('year').textContent=new Date().getFullYear();window.addEventListener('scroll',()=>topbar.classList.toggle('solid',window.scrollY>20));menuButton.addEventListener('click',()=>{const opened=mainNav.classList.toggle('open');menuButton.setAttribute('aria-expanded',opened)});
 
-
-menuButton.addEventListener('click',()=>{
-    const opened=mainNav.classList.toggle('open');
-    menuButton.setAttribute('aria-expanded',opened)
+Header
+const topbar = document.getElementById('topbar');
+window.addEventListener('scroll', () => {
+    topbar.classList.toggle('solid', window.scrollY > 20);
 });
 
+// Mobile Menu
+const menuButton = document.getElementById('menuButton');
+const mainNav = document.getElementById('mainNav');
 
-setInterval(()=>{slides[index].classList.remove('active');index=(index+1)%slides.length;slides[index].classList.add('active')},4500);const lightbox=document.getElementById('lightbox');const lightboxImage=document.getElementById('lightboxImage');document.querySelectorAll('[data-full]').forEach(button=>button.addEventListener('click',()=>{lightboxImage.src=button.dataset.full;lightbox.showModal()}));document.getElementById('closeLightbox').addEventListener('click',()=>lightbox.close());lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.close()});
+menuButton.addEventListener('click', () => {
+    const opened = mainNav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', opened);
+});
 
-
-
-
+// Close menu when a menu link is clicked
 document.querySelectorAll('#mainNav a').forEach(link => {
     link.addEventListener('click', () => {
         mainNav.classList.remove('open');
@@ -19,14 +22,47 @@ document.querySelectorAll('#mainNav a').forEach(link => {
     });
 });
 
+// Hero Slider
+const slides = document.querySelectorAll('.hero-slide');
+let index = 0;
 
+if (slides.length > 1) {
+    setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+    }, 4500);
+}
 
-document.addEventListener('click', function(e) {
-    if (
-        !mainNav.contains(e.target) &&
-        !menuButton.contains(e.target)
-    ) {
-        mainNav.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-    }
+// Footer Year
+const year = document.getElementById('year');
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
+
+// Lightbox Gallery
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const closeLightbox = document.getElementById('closeLightbox');
+
+document.querySelectorAll('[data-full]').forEach(button => {
+    button.addEventListener('click', () => {
+        lightboxImage.src = button.dataset.full;
+        lightbox.showModal();
+    });
 });
+
+if (closeLightbox) {
+    closeLightbox.addEventListener('click', () => {
+        lightbox.close();
+    });
+}
+
+if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.close();
+        }
+    });
+}
+
