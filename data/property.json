@@ -1,0 +1,14 @@
+{
+  "address": "48 Hodgkinson Crescent, Aurora, ON L4G 6K7",
+  "community": "Hills of St. Andrew",
+  "price": "Replace with current price",
+  "beds": "5",
+  "baths": "4",
+  "parking": "9",
+  "size": "3,000\u20133,500 sq. ft.",
+  "agent": {
+    "name": "Agent Name",
+    "phone": "Agent Phone",
+    "email": "agent@example.com"
+  }
+}
