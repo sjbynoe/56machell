@@ -32,3 +32,27 @@
     display:block;
 }
 
+
+
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.agent-card {
+    width: 100%;
+}
+
+@media (max-width: 850px) {
+    .agent-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+.agent-card img {
+    object-position: center top;
+}
