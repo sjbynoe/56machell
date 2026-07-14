@@ -303,10 +303,24 @@
     <p>© <span id="year"></span> <!--56 Machell Avenue Property Listing--></p>
   </footer>
 
-  <dialog class="lightbox" id="lightbox">
+  <!--<dialog class="lightbox" id="lightbox">
     <button id="closeLightbox" aria-label="Close">×</button>
     <img src="" alt="Expanded property photo" id="lightboxImage">
-  </dialog>
+  </dialog>-->
+	
+	<dialog class="lightbox" id="lightbox">
+    <button id="closeLightbox" aria-label="Close">×</button>
+
+    <button id="prevPhoto" class="lightbox-nav lightbox-prev" aria-label="Previous Photo">
+        ‹
+    </button>
+
+    <img src="" alt="Expanded property photo" id="lightboxImage">
+
+    <button id="nextPhoto" class="lightbox-nav lightbox-next" aria-label="Next Photo">
+        ›
+    </button>
+</dialog>
 
   <script src="assets/js/main.js"></script>
 </body>
