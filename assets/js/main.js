@@ -58,7 +58,11 @@ const galleryButtons = Array.from(document.querySelectorAll('[data-full]'));
 
 let currentPhotoIndex = 0;
 
+
+
+
 function showPhoto(index) {
+
     currentPhotoIndex =
         (index + galleryButtons.length) % galleryButtons.length;
 
@@ -66,11 +70,22 @@ function showPhoto(index) {
 
     lightboxImage.src = button.dataset.full;
 
+    gtag('event','gallery_photo_view',{
+        image: button.dataset.full
+    });
+
     const img = button.querySelector('img');
+
     if (img) {
         lightboxImage.alt = img.alt;
     }
 }
+
+
+
+
+
+
 
 function closeGallery() {
     if (lightbox.open) {
@@ -156,9 +171,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 
-gtag('event','gallery_photo_view',{
-  image: imageSrc
-});
+
 
 
 
