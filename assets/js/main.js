@@ -161,3 +161,21 @@ gtag('event','gallery_photo_view',{
 });
 
 
+
+
+gtag('event','matterport_view');
+
+
+
+
+const iframe = document.querySelector('iframe[src*="vimeo"]');
+const player = new Vimeo.Player(iframe);
+
+player.on('play', function() {
+    gtag('event','video_play');
+});
+
+player.on('ended', function() {
+    gtag('event','video_complete');
+});
+
