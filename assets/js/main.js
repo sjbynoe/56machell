@@ -178,16 +178,23 @@ document.addEventListener('keydown', (e) => {
 
 
 
+
 const iframe = document.querySelector('iframe[src*="vimeo"]');
-const player = new Vimeo.Player(iframe);
 
-player.on('play', function() {
-    gtag('event','video_play');
-});
+if (iframe && typeof Vimeo !== 'undefined') {
 
-player.on('ended', function() {
-    gtag('event','video_complete');
-});
+    const player = new Vimeo.Player(iframe);
+
+    player.on('play', function() {
+        gtag('event','video_play');
+    });
+
+    player.on('ended', function() {
+        gtag('event','video_complete');
+    });
+
+}
+
 
 
 
