@@ -183,21 +183,38 @@ document.addEventListener('keydown', (e) => {
 
 
 
-const iframe = document.querySelector('iframe[src*="vimeo"]');
 
-if (iframe && typeof Vimeo !== 'undefined') {
+const vimeoIframe = document.querySelector('#video iframe');
 
-    const player = new Vimeo.Player(iframe);
+console.log('Vimeo iframe found:', vimeoIframe);
+console.log('Vimeo object:', typeof Vimeo);
 
-    player.on('play', function() {
-        gtag('event','video_play');
+if (vimeoIframe && typeof Vimeo !== 'undefined') {
+
+    const player = new Vimeo.Player(vimeoIframe);
+
+    player.on('play', function () {
+
+        console.log('VIDEO PLAY EVENT FIRED');
+
+        gtag('event', 'video_play', {
+            property: '56 Machell Avenue'
+        });
+
     });
 
-    player.on('ended', function() {
-        gtag('event','video_complete');
+    player.on('ended', function () {
+
+        console.log('VIDEO COMPLETE EVENT FIRED');
+
+        gtag('event', 'video_complete', {
+            property: '56 Machell Avenue'
+        });
+
     });
 
 }
+
 
 
 
