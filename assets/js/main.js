@@ -70,9 +70,13 @@ function showPhoto(index) {
 
     lightboxImage.src = button.dataset.full;
 
+
+if (typeof gtag !== 'undefined') {
     gtag('event','gallery_photo_view',{
         image: button.dataset.full
     });
+}
+
 
     const img = button.querySelector('img');
 
