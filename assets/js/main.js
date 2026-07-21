@@ -155,3 +155,9 @@ document.addEventListener('keydown', (e) => {
 
 });
 
+
+gtag('event','gallery_photo_view',{
+  image: imageSrc
+});
+
+
