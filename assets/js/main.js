@@ -176,9 +176,6 @@ document.addEventListener('keydown', (e) => {
 
 
 
-gtag('event','matterport_view');
-
-
 
 
 const iframe = document.querySelector('iframe[src*="vimeo"]');
