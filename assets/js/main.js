@@ -179,3 +179,28 @@ player.on('ended', function() {
     gtag('event','video_complete');
 });
 
+
+
+
+
+
+let tracked50 = false;
+let tracked90 = false;
+
+window.addEventListener('scroll', () => {
+
+    const scrollPercent =
+        ((window.scrollY + window.innerHeight) /
+        document.body.scrollHeight) * 100;
+
+    if (scrollPercent > 50 && !tracked50) {
+        tracked50 = true;
+        gtag('event','scroll_50');
+    }
+
+    if (scrollPercent > 90 && !tracked90) {
+        tracked90 = true;
+        gtag('event','scroll_90');
+    }
+
+});
